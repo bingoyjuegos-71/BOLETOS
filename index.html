@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bingo 90 Línea | ¡Gana con Solo 5 Números!</title>
+  <style>
+    :root {
+      --gold: #FFD700;
+      --gold-dark: #B8860B;
+      --blue-deep: #1a0b2e;
+      --blue-bright: #4a148c;
+      --red: #d32f2f;
+      --purple: #7b1fa2;
+      --nequi: #d9006c;
+      --whatsapp: #25d366;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff; 
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255,215,0,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(217,0,108,0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+    
+    header { 
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark)); 
+      padding: 1rem 0; 
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '✨';
+      position: absolute;
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      animation: sparkle 2s infinite;
+    }
+    header::after {
+      content: '✨';
+      position: absolute;
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      animation: sparkle 2s infinite 1s;
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+      50% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
+    }
+    header h1 { 
+      font-size: 2rem; 
+      color: var(--blue-deep);
+      text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
+      margin: 0;
+    }
+    header p { 
+      color: var(--blue-deep); 
+      font-weight: 600;
+      margin: 0.3rem 0 0;
+    }
+
+    .social-bar {
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 0;
+      text-align: center;
+    }
+    .social-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1877f2;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      margin: 0 0.3rem;
+    }
+    .social-bar a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(24,119,242,0.4);
+    }
+
+    section { padding: 2rem 0; }
+    h2 { 
+      text-align: center; 
+      margin-bottom: 1.5rem; 
+      color: var(--gold); 
+      font-size: 1.8rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero { 
+      background: linear-gradient(135deg, var(--blue-deep), var(--purple), var(--nequi)); 
+      text-align: center; 
+      padding: 2rem 1rem; 
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: moveGrid 20s linear infinite;
+    }
+    @keyframes moveGrid {
+      0% { transform: translate(0,0); }
+      100% { transform: translate(50px,50px); }
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 { 
+      font-size: 2.2rem; 
+      margin-bottom: 0.5rem;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      background: linear-gradient(to right, #FFD700, #FFF, #FFD700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p { 
+      font-size: 1.1rem; 
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+    
+    .video-container {
+      max-width: 500px;
+      margin: 1.5rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(255,215,0,0.3);
+      border: 3px solid var(--gold);
+      background: rgba(0,0,0,0.5);
+    }
+    .video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .countdown { 
+      background: rgba(255,215,0,0.2); 
+      border: 2px solid var(--gold);
+      display: inline-flex; 
+      gap: 0.8rem; 
+      padding: 0.8rem 1.2rem; 
+      border-radius: 12px; 
+      font-weight: 700; 
+      margin: 1rem 0;
+      backdrop-filter: blur(10px);
+    }
+    .countdown div { 
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+    }
+    .countdown span { 
+      display: block; 
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+    .countdown-label {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+    
+    .btn { 
+      display: inline-block; 
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
+      color: var(--blue-deep); 
+      padding: 1rem 2rem; 
+      border: none; 
+      border-radius: 25px; 
+      font-weight: 700; 
+      font-size: 1.1rem;
+      cursor: pointer; 
+      text-decoration: none; 
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+      text-transform: uppercase;
+    }
+    .btn:hover { 
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255,215,0,0.6);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .feature-card {
+      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(217,0,108,0.1));
+      border: 2px solid var(--gold);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .feature-card h3 {
+      color: var(--gold);
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .spots-info { 
+      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,0,0,0.3)); 
+      padding: 1rem; 
+      border-radius: 12px; 
+      text-align: center; 
+      margin-bottom: 2rem;
+      border: 2px solid var(--gold);
+      font-size: 1rem;
+    }
+    .spots-info strong { 
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .ticket-box { 
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); 
+      padding: 2rem; 
+      border-radius: 20px; 
+      border: 3px solid var(--gold);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.2);
+      max-width: 450px; 
+      margin: 0 auto 2rem; 
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .ticket-box h3 { 
+      color: var(--gold); 
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    .price { 
+      font-size: 2.5rem; 
+      font-weight: 700; 
+      margin: 0.5rem 0;
+      background: linear-gradient(to right, var(--gold), #FFF, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .qty-wrap { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 1rem; 
+      margin: 1.5rem 0; 
+    }
+    .qty-btn { 
+      width: 45px; 
+      height: 45px; 
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
+      border: none; 
+      border-radius: 12px; 
+      font-size: 1.5rem; 
+      cursor: pointer;
+      color: var(--blue-deep);
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    .qty-btn:hover:not(:disabled) { 
+      transform: scale(1.1);
+    }
+    .qty-btn:disabled { 
+      opacity: 0.3; 
+      cursor: not-allowed; 
+    }
+    .qty-input { 
+      width: 60px; 
+      text-align: center; 
+      border: 2px solid var(--gold); 
+      background: rgba(0,0,0,0.3);
+      color: var(--gold);
+      font-weight: 700; 
+      font-size: 1.5rem;
+      border-radius: 8px;
+    }
+    .total-line { 
+      color: var(--gold); 
+      font-size: 1.1rem; 
+      margin-top: 0.5rem;
+    }
+    .limit-badge { 
+      background: rgba(211,47,47,0.3); 
+      color: #ff6659; 
+      padding: 0.4rem 0.8rem; 
+      border-radius: 8px; 
+      font-size: 0.85rem; 
+      display: inline-block; 
+      margin-top: 0.8rem;
+      border: 1px solid var(--red);
+    }
+
+    form { 
+      background: rgba(255,255,255,0.05); 
+      padding: 2rem; 
+      border-radius: 16px; 
+      border: 2px solid var(--gold);
+      max-width: 500px; 
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+    .form-group { 
+      margin-bottom: 1.2rem; 
+    }
+    label { 
+      display: block; 
+      margin-bottom: 0.5rem; 
+      font-weight: 600; 
+      color: var(--gold);
+    }
+    input { 
+      width: 100%; 
+      padding: 0.9rem; 
+      border: 2px solid rgba(255,215,0,0.3); 
+      border-radius: 10px; 
+      font-size: 1rem;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      transition: 0.3s;
+    }
+    input:focus { 
+      outline: none; 
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.2);
+    }
+    input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .nequi-box { 
+      background: linear-gradient(135deg, rgba(217,0,108,0.2), rgba(0,0,0,0.3)); 
+      border: 3px dashed var(--nequi); 
+      padding: 2rem; 
+      border-radius: 16px; 
+      text-align: center; 
+      margin: 2rem auto; 
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+    }
+    .nequi-number { 
+      font-size: 1.8rem; 
+      font-weight: 700; 
+      color: var(--nequi); 
+      margin: 0.8rem 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .copy-btn { 
+      background: rgba(255,255,255,0.2); 
+      border: 2px solid var(--nequi); 
+      padding: 0.5rem 1rem; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-size: 0.9rem; 
+      margin-top: 0.5rem;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .copy-btn:hover {
+      background: var(--nequi);
+    }
+    .steps { 
+      text-align: left; 
+      background: rgba(0,0,0,0.3); 
+      padding: 1.5rem; 
+      border-radius: 12px; 
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--gold);
+    }
+    .steps ol { 
+      padding-left: 1.5rem; 
+    }
+    .steps li { 
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+    .steps strong {
+      color: var(--gold);
+    }
+    .btn-whatsapp { 
+      background: linear-gradient(135deg, var(--whatsapp), #128c7e); 
+      color: white; 
+      width: 100%; 
+      padding: 1.1rem; 
+      border: none; 
+      border-radius: 12px; 
+      font-weight: 700; 
+      cursor: pointer; 
+      font-size: 1.1rem; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 0.6rem; 
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+    .btn-whatsapp:hover:not(:disabled) { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+    }
+    .btn-whatsapp:disabled { 
+      background: #666; 
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    .info { 
+      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3)); 
+      padding: 2rem; 
+      border-radius: 16px; 
+      text-align: center; 
+      margin-top: 2rem;
+      border: 2px solid var(--gold);
+    }
+    .info h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .info ul { 
+      text-align: left; 
+      max-width: 500px; 
+      margin: 0 auto; 
+      list-style: none; 
+      padding: 0; 
+    }
+    .info li { 
+      margin-bottom: 0.7rem; 
+      padding-left: 2rem; 
+      position: relative;
+      line-height: 1.5;
+    }
+    .info li::before { 
+      content: "🎯"; 
+      position: absolute; 
+      left: 0;
+      font-size: 1.2rem;
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 2rem; 
+      background: rgba(0,0,0,0.5);
+      border-top: 2px solid var(--gold);
+      margin-top: 3rem;
+    }
+    footer p {
+      margin: 0.3rem 0;
+      opacity: 0.8;
+    }
+    .footer-links {
+      margin-top: 1rem;
+    }
+    .footer-links a {
+      color: var(--gold);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.6rem; }
+      .countdown { gap: 0.4rem; padding: 0.6rem 0.8rem; }
+      .countdown span { font-size: 1.2rem; }
+      .countdown-label { font-size: 0.6rem; }
+      form, .nequi-box, .ticket-box { padding: 1.5rem; }
+      .price { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>🎰 BINGO 90 LÍNEA 🎰</h1>
+      <p>¡Nueva Generación de Bingo! | Solo 5 números para ganar</p>
+    </div>
+  </header>
+
+  <div class="social-bar">
+    <div class="container">
+      <a href="https://www.facebook.com/jonzu17" target="_blank">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Síguenos en Facebook
+      </a>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>¡Ronda Activa! 🎉</h1>
+        <p>Bote acumulado creciente | Partidas rápidas y automáticas</p>
+        
+        <!-- VIDEO - Se reproduce al dar click -->
+        <div class="video-container">
+          <video controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+          </video>
+        </div>
+
+        <div class="countdown" id="countdown">
+          <div>
+            <span id="hours">12</span>
+            <div class="countdown-label">HORAS</div>
+          </div>
+          <div>
+            <span id="minutes">00</span>
+            <div class="countdown-label">MIN</div>
+          </div>
+          <div>
+            <span id="seconds">00</span>
+            <div class="countdown-label">SEG</div>
+          </div>
+        </div>
+        <br>
+        <a href="#comprar" class="btn">🎟️ Comprar Ahora</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Solo 5 Números</h3>
+        <p>Especiales para ganar el premio mayor</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>Bote Creciente</h3>
+        <p>¡Acumulado que crece cada ronda!</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Rápido</h3>
+        <p>Partidas automáticas cada 5 segundos</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Pago Nequi</h3>
+        <p>Fácil, rápido y seguro</p>
+      </div>
+    </section>
+
+    <div class="spots-info">
+      🎟️ <strong>30 puestos por ronda</strong> | 🟢 <span id="spotsLeft">24</span> disponibles
+      <br><small style="opacity:0.8;">(Actualiza manualmente antes de cada ronda)</small>
+    </div>
+
+    <section id="comprar">
+      <h2>🎫 Elige Tus Boletos</h2>
+      <div class="ticket-box">
+        <h3>Boleto Bingo 90 Línea</h3>
+        <p class="price">$4.000 COP</p>
+        <p style="opacity:0.9; margin-bottom:1rem;">Valor por ronda - Pago con Nequi</p>
+        <div class="qty-wrap">
+          <button class="qty-btn" id="btnMinus" onclick="changeQty(-1)" disabled>−</button>
+          <input type="text" id="qtyInput" class="qty-input" value="0" readonly>
+          <button class="qty-btn" id="btnPlus" onclick="changeQty(1)">+</button>
+        </div>
+        <p class="total-line">Total: $<span id="totalPrice">0</span> COP</p>
+        <span class="limit-badge">⚠️ Máximo 2 boletos por jugador</span>
+      </div>
+    </section>
+
+    <section id="datos">
+      <h2>📝 Tus Datos</h2>
+      <form id="userForm">
+        <div class="form-group">
+          <label>Nombre completo</label>
+          <input type="text" id="nombre" required placeholder="Ej. María González">
+        </div>
+        <div class="form-group">
+          <label>Teléfono (WhatsApp)</label>
+          <input type="tel" id="telefono" required placeholder="300 123 4567">
+        </div>
+        <div class="form-group">
+          <label>Correo (opcional)</label>
+          <input type="email" id="email" placeholder="correo@ejemplo.com">
+        </div>
+      </form>
+    </section>
+
+    <section id="pago">
+      <h2>💳 Paga con Nequi</h2>
+      <div class="nequi-box">
+        <p style="font-size:1.1rem; margin-bottom:0.5rem;">💰 Envía el monto exacto a:</p>
+        <div class="nequi-number" id="nequiNum">314 715 6778</div>
+        <button class="copy-btn" onclick="copyNumber()">📋 Copiar número</button>
+        
+        <div class="steps">
+          <ol>
+            <li>Abre tu app <strong>Nequi</strong></li>
+            <li>Selecciona <strong>"Enviar dinero"</strong></li>
+            <li>Pega el número y confirma el monto ($4.000 o $8.000)</li>
+            <li><strong>Toma captura</strong> del comprobante</li>
+            <li>Presiona el botón verde para enviarla por WhatsApp</li>
+          </ol>
+        </div>
+        
+        <button type="button" class="btn-whatsapp" id="waBtn" onclick="enviarComprobante()" disabled>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Enviar Comprobante por WhatsApp
+        </button>
+        <p style="margin-top:1rem; font-size:0.9rem; opacity:0.9;">
+          📩 Se abrirá WhatsApp con el <strong>315 134 6112</strong><br>
+          ⏱️ Confirmación en máximo 1 hora
+        </p>
+      </div>
+    </section>
+
+    <section class="info">
+      <h3>ℹ️ ¿Cómo Funciona Bingo 90 Línea?</h3>
+      <ul>
+        <li>Compra 1 o 2 boletos por ronda ($4.000 c/u)</li>
+        <li>Paga con Nequi al 314 715 6778</li>
+        <li>Envía la captura por WhatsApp al 315 134 6112</li>
+        <li>Recibe tus números de puesto por mensaje privado</li>
+        <li>Solo necesitas 5 números especiales para ganar</li>
+        <li>¡Partidas automáticas cada 5 segundos!</li>
+        <li>Sorteo sorpresa para el gran premio 🎁</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="color:var(--gold); font-size:1.1rem; font-weight:600;">© 2026 Bingo 90 Línea</p>
+      <p>Todos los derechos reservados</p>
+      <div class="footer-links">
+        <a href="https://www.facebook.com/jonzu17" target="_blank">📘 Facebook</a> | 
+        <a href="https://wa.me/573151346112" target="_blank">📱 WhatsApp</a>
+      </div>
+      <p style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">
+        Juega con responsabilidad. Sorteos sujetos a disponibilidad y verificación de pago.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const PRICE_PER_TICKET = 4000;
+    const MAX_PER_USER = 2;
+    let selectedQty = 0;
+
+    function changeQty(delta) {
+      selectedQty = Math.min(MAX_PER_USER, Math.max(0, selectedQty + delta));
+      document.getElementById('qtyInput').value = selectedQty;
+      document.getElementById('totalPrice').textContent = (selectedQty * PRICE_PER_TICKET).toLocaleString('es-CO');
+      document.getElementById('btnMinus').disabled = selectedQty === 0;
+      document.getElementById('btnPlus').disabled = selectedQty === MAX_PER_USER;
+      document.getElementById('waBtn').disabled = selectedQty === 0;
+    }
+
+    let endTime = localStorage.getItem('bingoEndTime');
+    if (!endTime || new Date().getTime() > parseInt(endTime)) {
+      endTime = new Date().getTime() + (12 * 60 * 60 * 1000);
+      localStorage.setItem('bingoEndTime', endTime);
+    }
+
+    function tick() {
+      const now = new Date().getTime();
+      const diff = endTime - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<span style="color:#ff4444; font-weight:bold; font-size:1.2rem;">🔒 VENTA CERRADA</span>';
+        document.getElementById('waBtn').disabled = true;
+        document.getElementById('btnPlus').disabled = true;
+        return;
+      }
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById('hours').textContent = String(h).padStart(2,'0');
+      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+      document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+    }
+    setInterval(tick, 1000); tick();
+
+    function copyNumber() {
+      navigator.clipboard.writeText('3147156778').then(() => {
+        alert('✅ Número Nequi copiado: 314 715 6778');
+      });
+    }
+
+    function enviarComprobante() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const tel = document.getElementById('telefono').value.trim();
+      const email = document.getElementById('email').value.trim() || 'No proporcionado';
+
+      if (!nombre || !tel) {
+        alert('⚠️ Por favor completa al menos tu nombre y teléfono.');
+        document.getElementById('datos').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      const total = selectedQty * PRICE_PER_TICKET;
+      let msg = `🎰 *BINGO 90 LÍNEA - COMPRA DE BOLETOS*\n\n`;
+      msg += `👤 *Nombre:* ${nombre}\n`;
+      msg += `📱 *Tel:* ${tel}\n`;
+      msg += `📧 *Email:* ${email}\n`;
+      msg += `🎫 *Boletos:* ${selectedQty}\n`;
+      msg += `💰 *Total pagado:* $${total.toLocaleString('es-CO')} COP\n\n`;
+      msg += `📎 *Adjunto captura del comprobante Nequi 👇*`;
+
+      const waLink = `https://wa.me/573151346112?text=${encodeURIComponent(msg)}`;
+      window.open(waLink, '_blank');
+    }
+  </script>
+</body>
+</html>
