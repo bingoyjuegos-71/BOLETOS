@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bingo 90 Línea | ¡Gana con Solo 5 Números!</title>
+  <title>Bingo & Rifas | 3 Juegos - 3 Oportunidades de Ganar</title>
   <style>
     :root {
       --gold: #FFD700;
       --gold-dark: #B8860B;
       --blue-deep: #1a0b2e;
-      --blue-bright: #4a148c;
-      --red: #d32f2f;
       --purple: #7b1fa2;
       --nequi: #d9006c;
       --whatsapp: #25d366;
+      --bingo-pro: #ff6b35;
+      --rifas: #00b4d8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
@@ -37,38 +37,42 @@
 
     .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
     
+    /* WhatsApp Group Bar */
+    .whatsapp-group-bar {
+      background: linear-gradient(135deg, var(--whatsapp), #128c7e);
+      padding: 0.8rem 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .whatsapp-group-bar a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255,255,255,0.2);
+      border-radius: 25px;
+      transition: 0.3s;
+    }
+    .whatsapp-group-bar a:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    
     header { 
       background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark)); 
-      padding: 1rem 0; 
+      padding: 1.5rem 0; 
       text-align: center;
       box-shadow: 0 4px 20px rgba(255,215,0,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '✨';
-      position: absolute;
-      left: 10%;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      animation: sparkle 2s infinite;
-    }
-    header::after {
-      content: '✨';
-      position: absolute;
-      right: 10%;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      animation: sparkle 2s infinite 1s;
-    }
-    @keyframes sparkle {
-      0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
-      50% { opacity: 0.5; transform: translateY(-50%) scale(0.8); }
     }
     header h1 { 
-      font-size: 2rem; 
+      font-size: 2.2rem; 
       color: var(--blue-deep);
       text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
       margin: 0;
@@ -76,7 +80,8 @@
     header p { 
       color: var(--blue-deep); 
       font-weight: 600;
-      margin: 0.3rem 0 0;
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
     }
 
     .social-bar {
@@ -111,37 +116,85 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
+    /* Game Selector Tabs */
+    .game-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .game-tab {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border: 3px solid rgba(255,215,0,0.3);
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      backdrop-filter: blur(10px);
+    }
+    .game-tab:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 8px 25px rgba(255,215,0,0.3);
+    }
+    .game-tab.active {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1));
+      box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+    }
+    .game-tab.bingo-linea.active { border-color: var(--gold); }
+    .game-tab.bingo-pro.active { border-color: var(--bingo-pro); }
+    .game-tab.rifas.active { border-color: var(--rifas); }
+    
+    .game-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .game-tab h3 {
+      color: var(--gold);
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
+    }
+    .game-tab p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .game-price {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--blue-deep);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Game Content Sections */
+    .game-content {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    .game-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .hero { 
       background: linear-gradient(135deg, var(--blue-deep), var(--purple), var(--nequi)); 
       text-align: center; 
       padding: 2rem 1rem; 
-      position: relative;
-      overflow: hidden;
+      border-radius: 20px;
+      margin-bottom: 2rem;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,215,0,0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-      animation: moveGrid 20s linear infinite;
-    }
-    @keyframes moveGrid {
-      0% { transform: translate(0,0); }
-      100% { transform: translate(50px,50px); }
-    }
-    .hero-content { position: relative; z-index: 1; }
     .hero h1 { 
-      font-size: 2.2rem; 
+      font-size: 2rem; 
       margin-bottom: 0.5rem;
       text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-      background: linear-gradient(to right, #FFD700, #FFF, #FFD700);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
     .hero p { 
       font-size: 1.1rem; 
@@ -218,7 +271,7 @@
       margin: 2rem 0;
     }
     .feature-card {
-      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(217,0,108,0.1));
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
       border: 2px solid var(--gold);
       padding: 1.5rem;
       border-radius: 12px;
@@ -228,7 +281,7 @@
     .feature-card h3 {
       color: var(--gold);
       margin: 0.5rem 0;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
     .feature-icon {
       font-size: 2.5rem;
@@ -325,6 +378,51 @@
       margin-top: 0.8rem;
       border: 1px solid var(--red);
     }
+    .no-limit-badge {
+      background: rgba(0,180,216,0.3);
+      color: #00e5ff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 0.8rem;
+      border: 1px solid var(--rifas);
+    }
+
+    /* Number selector for Rifas */
+    .number-selector {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      border: 2px solid var(--rifas);
+    }
+    .number-selector label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .number-selector input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--rifas);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .number-selector input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .number-selector small {
+      display: block;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+      font-size: 0.85rem;
+    }
 
     form { 
       background: rgba(255,255,255,0.05); 
@@ -344,7 +442,7 @@
       font-weight: 600; 
       color: var(--gold);
     }
-    input { 
+    input, select { 
       width: 100%; 
       padding: 0.9rem; 
       border: 2px solid rgba(255,215,0,0.3); 
@@ -354,12 +452,12 @@
       color: #fff;
       transition: 0.3s;
     }
-    input:focus { 
+    input:focus, select:focus { 
       outline: none; 
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(255,215,0,0.2);
     }
-    input::placeholder {
+    input::placeholder, select::placeholder {
       color: rgba(255,255,255,0.5);
     }
 
@@ -453,8 +551,8 @@
     }
     .info ul { 
       text-align: left; 
-      max-width: 500px; 
-      margin: 0 auto; 
+      max-width: 600px; 
+      margin: 0.5rem auto; 
       list-style: none; 
       padding: 0; 
     }
@@ -469,6 +567,33 @@
       position: absolute; 
       left: 0;
       font-size: 1.2rem;
+    }
+
+    .prizes-box {
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(0,0,0,0.3));
+      border: 2px solid var(--bingo-pro);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    .prizes-box h4 {
+      color: var(--bingo-pro);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .prize-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .prize-item:last-child {
+      border-bottom: none;
+    }
+    .prize-amount {
+      color: var(--gold);
+      font-weight: 700;
     }
 
     footer { 
@@ -501,15 +626,26 @@
       .countdown-label { font-size: 0.6rem; }
       form, .nequi-box, .ticket-box { padding: 1.5rem; }
       .price { font-size: 2rem; }
+      .game-selector { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- WhatsApp Group Bar -->
+  <div class="whatsapp-group-bar">
+    <div class="container">
+      <a href="https://chat.whatsapp.com/GOGF61myWh07FOdb77DF3a?mode=wwt" target="_blank">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <strong>Únete a nuestro grupo de WhatsApp</strong> - Información, confirmaciones y pagos
+      </a>
+    </div>
+  </div>
+
   <header>
     <div class="container">
-      <h1>🎰 BINGO 90 LÍNEA 🎰</h1>
-      <p>¡Nueva Generación de Bingo! | Solo 5 números para ganar</p>
+      <h1>🎰 BINGO & RIFAS 🎰</h1>
+      <p>3 Juegos | 3 Oportunidades de Ganar | Pagos con Nequi</p>
     </div>
   </header>
 
@@ -523,81 +659,219 @@
   </div>
 
   <main class="container">
-    <section class="hero">
-      <div class="hero-content">
-        <h1>¡Ronda Activa! 🎉</h1>
-        <p>Bote acumulado creciente | Partidas rápidas y automáticas</p>
-        
-        <div class="video-container">
-          <video controls>
-            <source src="video.mp4" type="video/mp4">
-            Tu navegador no soporta videos HTML5.
-          </video>
+    
+    <!-- Game Selector -->
+    <section>
+      <h2>🎮 Elige Tu Juego</h2>
+      <div class="game-selector">
+        <div class="game-tab bingo-linea active" onclick="showGame('bingo-linea')">
+          <div class="game-icon">🎯</div>
+          <h3>Bingo 90 Línea</h3>
+          <p>Solo 5 números para ganar</p>
+          <span class="game-price">$4.000 COP</span>
         </div>
+        <div class="game-tab bingo-pro" onclick="showGame('bingo-pro')">
+          <div class="game-icon">🎰</div>
+          <h3>Bingo 90 Pro</h3>
+          <p>4 oportunidades por cartón</p>
+          <span class="game-price">$4.000 COP</span>
+        </div>
+        <div class="game-tab rifas" onclick="showGame('rifas')">
+          <div class="game-icon">🎲</div>
+          <h3>Rifas 2 Cifras</h3>
+          <p>Elige del 00 al 99 - Sin límite</p>
+          <span class="game-price">$4.000 COP</span>
+        </div>
+      </div>
+    </section>
 
-        <div class="countdown" id="countdown">
-          <div>
-            <span id="hours">12</span>
-            <div class="countdown-label">HORAS</div>
-          </div>
-          <div>
-            <span id="minutes">00</span>
-            <div class="countdown-label">MIN</div>
-          </div>
-          <div>
-            <span id="seconds">00</span>
-            <div class="countdown-label">SEG</div>
-          </div>
+    <!-- BINGO 90 LÍNEA -->
+    <div id="bingo-linea" class="game-content active">
+      <section class="hero">
+        <h1>🎯 Bingo 90 Línea</h1>
+        <p>¡Solo necesitas 5 números especiales para ganar!</p>
+        <div class="countdown" id="countdown-linea">
+          <div><span id="hours-linea">12</span><div class="countdown-label">HORAS</div></div>
+          <div><span id="minutes-linea">00</span><div class="countdown-label">MIN</div></div>
+          <div><span id="seconds-linea">00</span><div class="countdown-label">SEG</div></div>
         </div>
         <br>
-        <a href="#comprar" class="btn">🎟️ Comprar Ahora</a>
-      </div>
-    </section>
+        <a href="#comprar-linea" class="btn">🎟️ Comprar Ahora</a>
+      </section>
 
-    <section class="features">
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Solo 5 Números</h3>
-        <p>Especiales para ganar el premio mayor</p>
+      <div class="spots-info">
+        🎟️ <strong>30 puestos por ronda</strong> | 🟢 <span id="spotsLeft-linea">24</span> disponibles
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">💰</div>
-        <h3>Bote Creciente</h3>
-        <p>¡Acumulado que crece cada ronda!</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Rápido</h3>
-        <p>Partidas automáticas cada 5 segundos</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <h3>Pago Nequi</h3>
-        <p>Fácil, rápido y seguro</p>
-      </div>
-    </section>
 
-    <div class="spots-info">
-      🎟️ <strong>30 puestos por ronda</strong> | 🟢 <span id="spotsLeft">24</span> disponibles
-      <br><small style="opacity:0.8;">(Actualiza manualmente antes de cada ronda)</small>
+      <section id="comprar-linea">
+        <h2>🎫 Elige Tus Boletos</h2>
+        <div class="ticket-box">
+          <h3>Boleto Bingo 90 Línea</h3>
+          <p class="price">$4.000 COP</p>
+          <p style="opacity:0.9; margin-bottom:1rem;">Valor por ronda - Pago con Nequi</p>
+          <div class="qty-wrap">
+            <button class="qty-btn" id="btnMinus-linea" onclick="changeQty('linea', -1)" disabled>−</button>
+            <input type="text" id="qtyInput-linea" class="qty-input" value="0" readonly>
+            <button class="qty-btn" id="btnPlus-linea" onclick="changeQty('linea', 1)">+</button>
+          </div>
+          <p class="total-line">Total: $<span id="totalPrice-linea">0</span> COP</p>
+          <span class="limit-badge">⚠️ Máximo 2 boletos por jugador</span>
+        </div>
+      </section>
+
+      <section class="info">
+        <h3>ℹ️ ¿Cómo Funciona Bingo 90 Línea?</h3>
+        <ul>
+          <li>Compra 1 o 2 boletos por ronda ($4.000 c/u)</li>
+          <li>Solo necesitas 5 números especiales para ganar</li>
+          <li>Partidas rápidas y automáticas cada 5 segundos</li>
+          <li>Bote acumulado creciente</li>
+          <li>Sorteo sorpresa para el gran premio 🎁</li>
+        </ul>
+      </section>
     </div>
 
-    <section id="comprar">
-      <h2>🎫 Elige Tus Boletos</h2>
-      <div class="ticket-box">
-        <h3>Boleto Bingo 90 Línea</h3>
-        <p class="price">$4.000 COP</p>
-        <p style="opacity:0.9; margin-bottom:1rem;">Valor por ronda - Pago con Nequi</p>
-        <div class="qty-wrap">
-          <button class="qty-btn" id="btnMinus" onclick="changeQty(-1)" disabled>−</button>
-          <input type="text" id="qtyInput" class="qty-input" value="0" readonly>
-          <button class="qty-btn" id="btnPlus" onclick="changeQty(1)">+</button>
+    <!-- BINGO 90 PRO -->
+    <div id="bingo-pro" class="game-content">
+      <section class="hero" style="background: linear-gradient(135deg, #1a0b2e, #ff6b35, #d9006c);">
+        <h1>🎰 Bingo 90 Pro</h1>
+        <p>El clásico bingo de casino - 4 oportunidades de ganar</p>
+        <div class="countdown" id="countdown-pro">
+          <div><span id="hours-pro">12</span><div class="countdown-label">HORAS</div></div>
+          <div><span id="minutes-pro">00</span><div class="countdown-label">MIN</div></div>
+          <div><span id="seconds-pro">00</span><div class="countdown-label">SEG</div></div>
         </div>
-        <p class="total-line">Total: $<span id="totalPrice">0</span> COP</p>
-        <span class="limit-badge">⚠️ Máximo 2 boletos por jugador</span>
-      </div>
-    </section>
+        <br>
+        <a href="#comprar-pro" class="btn">🎟️ Comprar Cartones</a>
+      </section>
 
+      <div class="spots-info">
+        🎟️ <strong>Cartones disponibles</strong> | 🟢 <span id="spotsLeft-pro">50</span> disponibles
+      </div>
+
+      <div class="prizes-box">
+        <h4>🏆 PREMIOS POR CARTÓN</h4>
+        <div class="prize-item">
+          <span>1️⃣ Primera Línea</span>
+          <span class="prize-amount">$50.000</span>
+        </div>
+        <div class="prize-item">
+          <span>2️⃣ Segunda Línea</span>
+          <span class="prize-amount">$100.000</span>
+        </div>
+        <div class="prize-item">
+          <span>3️⃣ Tercera Línea</span>
+          <span class="prize-amount">$150.000</span>
+        </div>
+        <div class="prize-item" style="border-top: 2px solid var(--gold); margin-top: 0.5rem; padding-top: 0.5rem;">
+          <span style="font-size: 1.1rem;">🎰 EL GORDO (Cartón Lleno)</span>
+          <span class="prize-amount" style="font-size: 1.2rem;">ACUMULADO DIARIO</span>
+        </div>
+      </div>
+
+      <section id="comprar-pro">
+        <h2>🎫 Elige Tus Cartones</h2>
+        <div class="ticket-box" style="border-color: var(--bingo-pro);">
+          <h3 style="color: var(--bingo-pro);">Cartón Bingo 90 Pro</h3>
+          <p class="price">$4.000 COP</p>
+          <p style="opacity:0.9; margin-bottom:1rem;">4 oportunidades de ganar por cartón</p>
+          <div class="qty-wrap">
+            <button class="qty-btn" id="btnMinus-pro" onclick="changeQty('pro', -1)" disabled style="background: linear-gradient(135deg, var(--bingo-pro), #cc5500);">−</button>
+            <input type="text" id="qtyInput-pro" class="qty-input" value="0" readonly>
+            <button class="qty-btn" id="btnPlus-pro" onclick="changeQty('pro', 1)" style="background: linear-gradient(135deg, var(--bingo-pro), #cc5500);">+</button>
+          </div>
+          <p class="total-line">Total: $<span id="totalPrice-pro">0</span> COP</p>
+          <span class="limit-badge" style="background: rgba(255,107,53,0.3); color: #ffaa80; border-color: var(--bingo-pro);">⚠️ Máximo 4 cartones por jugador</span>
+        </div>
+      </section>
+
+      <section class="info" style="border-color: var(--bingo-pro);">
+        <h3 style="color: var(--bingo-pro);">ℹ️ ¿Cómo Funciona Bingo 90 Pro?</h3>
+        <ul>
+          <li>Compra hasta 4 cartones por ronda ($4.000 c/u)</li>
+          <li>4 oportunidades de ganar con cada cartón</li>
+          <li>Gana completando 1ra, 2da o 3ra línea</li>
+          <li>¡El Gordo! Cartón lleno = Acumulado diario</li>
+          <li>Sorteo en vivo con números aleatorios</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- RIFAS 2 CIFRAS -->
+    <div id="rifas" class="game-content">
+      <section class="hero" style="background: linear-gradient(135deg, #1a0b2e, #00b4d8, #0077b6);">
+        <h1>🎲 Rifas 2 Cifras</h1>
+        <p>Elige tus números favoritos del 00 al 99</p>
+        <div class="countdown" id="countdown-rifas">
+          <div><span id="hours-rifas">12</span><div class="countdown-label">HORAS</div></div>
+          <div><span id="minutes-rifas">00</span><div class="countdown-label">MIN</div></div>
+          <div><span id="seconds-rifas">00</span><div class="countdown-label">SEG</div></div>
+        </div>
+        <br>
+        <a href="#comprar-rifas" class="btn">🎟️ Elegir Números</a>
+      </section>
+
+      <div class="prizes-box" style="border-color: var(--rifas); background: linear-gradient(135deg, rgba(0,180,216,0.2), rgba(0,0,0,0.3));">
+        <h4 style="color: var(--rifas);">💰 5 POSIBILIDADES DE GANAR</h4>
+        <div class="prize-item">
+          <span>🥇 500 mil - Dos últimas del mayor</span>
+          <span class="prize-amount">$500.000</span>
+        </div>
+        <div class="prize-item">
+          <span>🥈 100 mil - Dos primeras</span>
+          <span class="prize-amount">$100.000</span>
+        </div>
+        <div class="prize-item">
+          <span>🥉 50 mil - Dos centrales</span>
+          <span class="prize-amount">$50.000</span>
+        </div>
+        <div class="prize-item">
+          <span>50 mil - Primera y última</span>
+          <span class="prize-amount">$50.000</span>
+        </div>
+        <div class="prize-item">
+          <span>30 mil - Dos últimas de la serie</span>
+          <span class="prize-amount">$30.000</span>
+        </div>
+      </div>
+
+      <section id="comprar-rifas">
+        <h2>🎫 Elige Tus Números</h2>
+        <div class="ticket-box" style="border-color: var(--rifas);">
+          <h3 style="color: var(--rifas);">Rifas 2 Cifras</h3>
+          <p class="price">$4.000 COP</p>
+          <p style="opacity:0.9; margin-bottom:1rem;">Por número - Sin límite de compra</p>
+          
+          <div class="number-selector">
+            <label for="numbers-rifas">📝 Tus números favoritos (00-99):</label>
+            <input type="text" id="numbers-rifas" placeholder="Ej: 15, 23, 87, 99" maxlength="200">
+            <small>Separa los números con comas. Ej: 05, 12, 45, 78, 99</small>
+          </div>
+
+          <div class="qty-wrap">
+            <button class="qty-btn" id="btnMinus-rifas" onclick="changeQty('rifas', -1)" disabled style="background: linear-gradient(135deg, var(--rifas), #0077b6);">−</button>
+            <input type="text" id="qtyInput-rifas" class="qty-input" value="0" readonly>
+            <button class="qty-btn" id="btnPlus-rifas" onclick="changeQty('rifas', 1)" style="background: linear-gradient(135deg, var(--rifas), #0077b6);">+</button>
+          </div>
+          <p class="total-line">Total: $<span id="totalPrice-rifas">0</span> COP</p>
+          <span class="no-limit-badge">✅ Sin límite - Compra todos los que quieras</span>
+        </div>
+      </section>
+
+      <section class="info" style="border-color: var(--rifas);">
+        <h3 style="color: var(--rifas);">ℹ️ ¿Cómo Funciona Rifas 2 Cifras?</h3>
+        <ul>
+          <li>Elige tus números favoritos del 00 al 99</li>
+          <li>Jugamos con resultados de loterías oficiales</li>
+          <li>5 formas diferentes de ganar con cada número</li>
+          <li>Sin límite de números por persona</li>
+          <li>Cada número cuesta $4.000 COP</li>
+          <li>Resultados basados en lotería del día</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- COMMON SECTIONS -->
     <section id="datos">
       <h2>📝 Tus Datos</h2>
       <form id="userForm">
@@ -627,7 +901,7 @@
           <ol>
             <li>Abre tu app <strong>Nequi</strong></li>
             <li>Selecciona <strong>"Enviar dinero"</strong></li>
-            <li>Pega el número y confirma el monto ($4.000 o $8.000)</li>
+            <li>Pega el número y confirma el monto</li>
             <li><strong>Toma captura</strong> del comprobante</li>
             <li>Presiona el botón verde para enviarla por WhatsApp</li>
           </ol>
@@ -644,27 +918,16 @@
       </div>
     </section>
 
-    <section class="info">
-      <h3>ℹ️ ¿Cómo Funciona Bingo 90 Línea?</h3>
-      <ul>
-        <li>Compra 1 o 2 boletos por ronda ($4.000 c/u)</li>
-        <li>Paga con Nequi al 314 715 6778</li>
-        <li>Envía la captura por WhatsApp al 321 597 8316</li>
-        <li>Recibe tus números de puesto por mensaje privado</li>
-        <li>Solo necesitas 5 números especiales para ganar</li>
-        <li>¡Partidas automáticas cada 5 segundos!</li>
-        <li>Sorteo sorpresa para el gran premio 🎁</li>
-      </ul>
-    </section>
   </main>
 
   <footer>
     <div class="container">
-      <p style="color:var(--gold); font-size:1.1rem; font-weight:600;">© 2026 Bingo 90 Línea</p>
+      <p style="color:var(--gold); font-size:1.1rem; font-weight:600;">© 2026 Bingo & Rifas</p>
       <p>Todos los derechos reservados</p>
       <div class="footer-links">
         <a href="https://www.facebook.com/jonzu17" target="_blank">📘 Facebook</a> | 
-        <a href="https://wa.me/573215978316" target="_blank">📱 WhatsApp</a>
+        <a href="https://wa.me/573215978316" target="_blank">📱 WhatsApp</a> |
+        <a href="https://chat.whatsapp.com/GOGF61myWh07FOdb77DF3a?mode=wwt" target="_blank">👥 Grupo WhatsApp</a>
       </div>
       <p style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">
         Juega con responsabilidad. Sorteos sujetos a disponibilidad y verificación de pago.
@@ -673,49 +936,94 @@
   </footer>
 
   <script>
-    const PRICE_PER_TICKET = 4000;
-    const MAX_PER_USER = 2;
-    let selectedQty = 0;
+    // Game state
+    const games = {
+      'linea': { qty: 0, max: 2, price: 4000, name: 'Bingo 90 Línea' },
+      'pro': { qty: 0, max: 4, price: 4000, name: 'Bingo 90 Pro' },
+      'rifas': { qty: 0, max: 999, price: 4000, name: 'Rifas 2 Cifras', numbers: '' }
+    };
+    let currentGame = 'linea';
 
-    function changeQty(delta) {
-      selectedQty = Math.min(MAX_PER_USER, Math.max(0, selectedQty + delta));
-      document.getElementById('qtyInput').value = selectedQty;
-      document.getElementById('totalPrice').textContent = (selectedQty * PRICE_PER_TICKET).toLocaleString('es-CO');
-      document.getElementById('btnMinus').disabled = selectedQty === 0;
-      document.getElementById('btnPlus').disabled = selectedQty === MAX_PER_USER;
-      document.getElementById('waBtn').disabled = selectedQty === 0;
+    // Show selected game
+    function showGame(gameId) {
+      currentGame = gameId;
+      
+      // Update tabs
+      document.querySelectorAll('.game-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.game-tab.${gameId}`).classList.add('active');
+      
+      // Update content
+      document.querySelectorAll('.game-content').forEach(content => content.classList.remove('active'));
+      document.getElementById(gameId).classList.add('active');
+      
+      // Update button state
+      updateButtonState();
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    let endTime = localStorage.getItem('bingoEndTime');
-    if (!endTime || new Date().getTime() > parseInt(endTime)) {
-      endTime = new Date().getTime() + (12 * 60 * 60 * 1000);
-      localStorage.setItem('bingoEndTime', endTime);
+    // Change quantity
+    function changeQty(game, delta) {
+      const g = games[game];
+      g.qty = Math.min(g.max, Math.max(0, g.qty + delta));
+      
+      document.getElementById(`qtyInput-${game}`).value = g.qty;
+      document.getElementById(`totalPrice-${game}`).textContent = (g.qty * g.price).toLocaleString('es-CO');
+      document.getElementById(`btnMinus-${game}`).disabled = g.qty === 0;
+      document.getElementById(`btnPlus-${game}`).disabled = g.qty >= g.max;
+      
+      updateButtonState();
     }
 
-    function tick() {
-      const now = new Date().getTime();
-      const diff = endTime - now;
-      if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<span style="color:#ff4444; font-weight:bold; font-size:1.2rem;">🔒 VENTA CERRADA</span>';
-        document.getElementById('waBtn').disabled = true;
-        document.getElementById('btnPlus').disabled = true;
-        return;
+    // Update WhatsApp button state
+    function updateButtonState() {
+      const total = getTotalAmount();
+      document.getElementById('waBtn').disabled = total === 0;
+    }
+
+    // Get total amount
+    function getTotalAmount() {
+      return Object.values(games).reduce((sum, g) => sum + (g.qty * g.price), 0);
+    }
+
+    // Countdown timers
+    function setupCountdown(gameId) {
+      let endTime = localStorage.getItem(`bingoEndTime-${gameId}`);
+      if (!endTime || new Date().getTime() > parseInt(endTime)) {
+        endTime = new Date().getTime() + (12 * 60 * 60 * 1000);
+        localStorage.setItem(`bingoEndTime-${gameId}`, endTime);
       }
-      const h = Math.floor(diff / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-      document.getElementById('hours').textContent = String(h).padStart(2,'0');
-      document.getElementById('minutes').textContent = String(m).padStart(2,'0');
-      document.getElementById('seconds').textContent = String(s).padStart(2,'0');
-    }
-    setInterval(tick, 1000); tick();
 
+      function tick() {
+        const now = new Date().getTime();
+        const diff = endTime - now;
+        if (diff <= 0) {
+          document.getElementById(`countdown-${gameId}`).innerHTML = '<span style="color:#ff4444; font-weight:bold;">🔒 CERRADO</span>';
+          return;
+        }
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById(`hours-${gameId}`).textContent = String(h).padStart(2,'0');
+        document.getElementById(`minutes-${gameId}`).textContent = String(m).padStart(2,'0');
+        document.getElementById(`seconds-${gameId}`).textContent = String(s).padStart(2,'0');
+      }
+      setInterval(tick, 1000); tick();
+    }
+
+    setupCountdown('linea');
+    setupCountdown('pro');
+    setupCountdown('rifas');
+
+    // Copy Nequi number
     function copyNumber() {
       navigator.clipboard.writeText('3147156778').then(() => {
         alert('✅ Número Nequi copiado: 314 715 6778');
       });
     }
 
+    // Send proof via WhatsApp
     function enviarComprobante() {
       const nombre = document.getElementById('nombre').value.trim();
       const tel = document.getElementById('telefono').value.trim();
@@ -727,14 +1035,34 @@
         return;
       }
 
-      const total = selectedQty * PRICE_PER_TICKET;
-      let msg = `🎰 *BINGO 90 LÍNEA - COMPRA DE BOLETOS*\n\n`;
+      const total = getTotalAmount();
+      if (total === 0) {
+        alert('⚠️ Selecciona al menos un boleto/cartón/número.');
+        return;
+      }
+
+      let msg = `🎰 *BINGO & RIFAS - COMPRA*\n\n`;
       msg += `👤 *Nombre:* ${nombre}\n`;
       msg += `📱 *Tel:* ${tel}\n`;
-      msg += `📧 *Email:* ${email}\n`;
-      msg += `🎫 *Boletos:* ${selectedQty}\n`;
-      msg += `💰 *Total pagado:* $${total.toLocaleString('es-CO')} COP\n\n`;
-      msg += `📎 *Adjunto captura del comprobante Nequi 👇*`;
+      msg += `📧 *Email:* ${email}\n\n`;
+      
+      if (games.linea.qty > 0) {
+        msg += `🎯 *Bingo 90 Línea:* ${games.linea.qty} boleto(s)\n`;
+        msg += `   Subtotal: $${(games.linea.qty * 4000).toLocaleString('es-CO')} COP\n`;
+      }
+      if (games.pro.qty > 0) {
+        msg += `🎰 *Bingo 90 Pro:* ${games.pro.qty} cartón(es)\n`;
+        msg += `   Subtotal: $${(games.pro.qty * 4000).toLocaleString('es-CO')} COP\n`;
+      }
+      if (games.rifas.qty > 0) {
+        const numbers = document.getElementById('numbers-rifas').value.trim();
+        msg += `🎲 *Rifas 2 Cifras:* ${games.rifas.qty} número(s)\n`;
+        if (numbers) msg += `   Números: ${numbers}\n`;
+        msg += `   Subtotal: $${(games.rifas.qty * 4000).toLocaleString('es-CO')} COP\n`;
+      }
+      
+      msg += `\n💰 *TOTAL:* $${total.toLocaleString('es-CO')} COP\n`;
+      msg += `\n📎 *Adjunto captura del comprobante Nequi 👇*`;
 
       const waLink = `https://wa.me/573215978316?text=${encodeURIComponent(msg)}`;
       window.open(waLink, '_blank');
