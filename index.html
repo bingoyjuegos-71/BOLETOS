@@ -202,21 +202,6 @@
       opacity: 0.95;
     }
     
-    .video-container {
-      max-width: 500px;
-      margin: 1.5rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(255,215,0,0.3);
-      border: 3px solid var(--gold);
-      background: rgba(0,0,0,0.5);
-    }
-    .video-container video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
     .countdown { 
       background: rgba(255,215,0,0.2); 
       border: 2px solid var(--gold);
@@ -680,7 +665,7 @@
           <div class="game-icon">🎲</div>
           <h3>Rifas 2 Cifras</h3>
           <p>Elige del 00 al 99 - Sin límite</p>
-          <span class="game-price">$4.000 COP</span>
+          <span class="game-price">$10.000 COP</span>
         </div>
       </div>
     </section>
@@ -801,7 +786,7 @@
     <div id="rifas" class="game-content">
       <section class="hero" style="background: linear-gradient(135deg, #1a0b2e, #00b4d8, #0077b6);">
         <h1>🎲 Rifas 2 Cifras</h1>
-        <p>Elige tus números favoritos del 00 al 99</p>
+        <p>¡Gana hasta 700 mil pesos! Elige del 00 al 99</p>
         <div class="countdown" id="countdown-rifas">
           <div><span id="hours-rifas">12</span><div class="countdown-label">HORAS</div></div>
           <div><span id="minutes-rifas">00</span><div class="countdown-label">MIN</div></div>
@@ -830,7 +815,7 @@
           <span class="prize-amount">$50.000</span>
         </div>
         <div class="prize-item">
-          <span>30 mil - Dos últimas de la serie</span>
+          <span>30 mil - Últimas de la serie</span>
           <span class="prize-amount">$30.000</span>
         </div>
       </div>
@@ -839,7 +824,7 @@
         <h2>🎫 Elige Tus Números</h2>
         <div class="ticket-box" style="border-color: var(--rifas);">
           <h3 style="color: var(--rifas);">Rifas 2 Cifras</h3>
-          <p class="price">$4.000 COP</p>
+          <p class="price">$10.000 COP</p>
           <p style="opacity:0.9; margin-bottom:1rem;">Por número - Sin límite de compra</p>
           
           <div class="number-selector">
@@ -862,10 +847,10 @@
         <h3 style="color: var(--rifas);">ℹ️ ¿Cómo Funciona Rifas 2 Cifras?</h3>
         <ul>
           <li>Elige tus números favoritos del 00 al 99</li>
+          <li>Cada número cuesta $10.000 COP</li>
           <li>Jugamos con resultados de loterías oficiales</li>
           <li>5 formas diferentes de ganar con cada número</li>
           <li>Sin límite de números por persona</li>
-          <li>Cada número cuesta $4.000 COP</li>
           <li>Resultados basados en lotería del día</li>
         </ul>
       </section>
@@ -940,7 +925,7 @@
     const games = {
       'linea': { qty: 0, max: 2, price: 4000, name: 'Bingo 90 Línea' },
       'pro': { qty: 0, max: 4, price: 4000, name: 'Bingo 90 Pro' },
-      'rifas': { qty: 0, max: 999, price: 4000, name: 'Rifas 2 Cifras', numbers: '' }
+      'rifas': { qty: 0, max: 999, price: 10000, name: 'Rifas 2 Cifras', numbers: '' }
     };
     let currentGame = 'linea';
 
@@ -1058,7 +1043,7 @@
         const numbers = document.getElementById('numbers-rifas').value.trim();
         msg += `🎲 *Rifas 2 Cifras:* ${games.rifas.qty} número(s)\n`;
         if (numbers) msg += `   Números: ${numbers}\n`;
-        msg += `   Subtotal: $${(games.rifas.qty * 4000).toLocaleString('es-CO')} COP\n`;
+        msg += `   Subtotal: $${(games.rifas.qty * 10000).toLocaleString('es-CO')} COP\n`;
       }
       
       msg += `\n💰 *TOTAL:* $${total.toLocaleString('es-CO')} COP\n`;
