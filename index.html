@@ -23,586 +23,138 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    
     body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(255,215,0,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(217,0,108,0.1) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
+      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,215,0,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(217,0,108,0.1) 0%, transparent 50%);
+      pointer-events: none; z-index: -1;
     }
-
     .container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
     
-    /* WhatsApp Group Bar */
     .whatsapp-group-bar {
       background: linear-gradient(135deg, var(--whatsapp), #128c7e);
-      padding: 0.8rem 0;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 0.8rem 0; text-align: center; position: sticky; top: 0; z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
     .whatsapp-group-bar a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.5rem 1.2rem;
-      background: rgba(255,255,255,0.2);
-      border-radius: 25px;
-      transition: 0.3s;
+      display: inline-flex; align-items: center; gap: 0.5rem; color: white;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem; padding: 0.5rem 1.2rem;
+      background: rgba(255,255,255,0.2); border-radius: 25px; transition: 0.3s;
     }
-    .whatsapp-group-bar a:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateY(-2px);
-    }
+    .whatsapp-group-bar a:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
     
     header { 
       background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark)); 
-      padding: 1.5rem 0; 
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(255,215,0,0.3);
+      padding: 1.5rem 0; text-align: center; box-shadow: 0 4px 20px rgba(255,215,0,0.3);
     }
-    header h1 { 
-      font-size: 2.2rem; 
-      color: var(--blue-deep);
-      text-shadow: 2px 2px 4px rgba(255,255,255,0.3);
-      margin: 0;
-    }
-    header p { 
-      color: var(--blue-deep); 
-      font-weight: 600;
-      margin: 0.5rem 0 0;
-      font-size: 1.1rem;
-    }
+    header h1 { font-size: 2.2rem; color: var(--blue-deep); text-shadow: 2px 2px 4px rgba(255,255,255,0.3); margin: 0; }
+    header p { color: var(--blue-deep); font-weight: 600; margin: 0.5rem 0 0; font-size: 1.1rem; }
 
-    .social-bar {
-      background: rgba(0,0,0,0.3);
-      padding: 0.5rem 0;
-      text-align: center;
-    }
+    .social-bar { background: rgba(0,0,0,0.3); padding: 0.5rem 0; text-align: center; }
     .social-bar a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #1877f2;
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      margin: 0 0.3rem;
+      display: inline-flex; align-items: center; gap: 0.5rem; background: #1877f2; color: white;
+      padding: 0.4rem 1rem; border-radius: 20px; text-decoration: none; font-weight: 600;
+      transition: 0.3s; margin: 0 0.3rem;
     }
-    .social-bar a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(24,119,242,0.4);
-    }
+    .social-bar a:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(24,119,242,0.4); }
 
     section { padding: 2rem 0; }
-    h2 { 
-      text-align: center; 
-      margin-bottom: 1.5rem; 
-      color: var(--gold); 
-      font-size: 1.8rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+    h2 { text-align: center; margin-bottom: 1.5rem; color: var(--gold); font-size: 1.8rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
-    /* Game Selector Tabs */
-    .game-selector {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
+    .game-selector { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0; }
     .game-tab {
       background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      border: 3px solid rgba(255,215,0,0.3);
-      padding: 1.5rem;
-      border-radius: 16px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255,215,0,0.3); padding: 1.5rem; border-radius: 16px;
+      text-align: center; cursor: pointer; transition: 0.3s; backdrop-filter: blur(10px);
     }
-    .game-tab:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-      box-shadow: 0 8px 25px rgba(255,215,0,0.3);
-    }
-    .game-tab.active {
-      border-color: var(--gold);
-      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1));
-      box-shadow: 0 8px 25px rgba(255,215,0,0.4);
-    }
+    .game-tab:hover { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 8px 25px rgba(255,215,0,0.3); }
+    .game-tab.active { border-color: var(--gold); background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,215,0,0.1)); box-shadow: 0 8px 25px rgba(255,215,0,0.4); }
     .game-tab.bingo-linea.active { border-color: var(--gold); }
     .game-tab.bingo-pro.active { border-color: var(--bingo-pro); }
     .game-tab.rifas.active { border-color: var(--rifas); }
     
-    .game-icon {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-    .game-tab h3 {
-      color: var(--gold);
-      margin: 0.5rem 0;
-      font-size: 1.3rem;
-    }
-    .game-tab p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-    .game-price {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--blue-deep);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-weight: 700;
-      margin-top: 0.5rem;
-      font-size: 0.95rem;
-    }
+    .game-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+    .game-tab h3 { color: var(--gold); margin: 0.5rem 0; font-size: 1.3rem; }
+    .game-tab p { font-size: 0.9rem; opacity: 0.9; }
+    .game-price { display: inline-block; background: var(--gold); color: var(--blue-deep); padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 700; margin-top: 0.5rem; font-size: 0.95rem; }
 
-    /* Game Content Sections */
-    .game-content {
-      display: none;
-      animation: fadeIn 0.5s;
-    }
-    .game-content.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .game-content { display: none; animation: fadeIn 0.5s; }
+    .game-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    .hero { 
-      background: linear-gradient(135deg, var(--blue-deep), var(--purple), var(--nequi)); 
-      text-align: center; 
-      padding: 2rem 1rem; 
-      border-radius: 20px;
-      margin-bottom: 2rem;
-    }
-    .hero h1 { 
-      font-size: 2rem; 
-      margin-bottom: 0.5rem;
-      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-    }
-    .hero p { 
-      font-size: 1.1rem; 
-      margin-bottom: 1rem;
-      opacity: 0.95;
-    }
+    .hero { background: linear-gradient(135deg, var(--blue-deep), var(--purple), var(--nequi)); text-align: center; padding: 2rem 1rem; border-radius: 20px; margin-bottom: 2rem; }
+    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; text-shadow: 3px 3px 6px rgba(0,0,0,0.5); }
+    .hero p { font-size: 1.1rem; margin-bottom: 1rem; opacity: 0.95; }
     
-    .countdown { 
-      background: rgba(255,215,0,0.2); 
-      border: 2px solid var(--gold);
-      display: inline-flex; 
-      gap: 0.8rem; 
-      padding: 0.8rem 1.2rem; 
-      border-radius: 12px; 
-      font-weight: 700; 
-      margin: 1rem 0;
-      backdrop-filter: blur(10px);
-    }
-    .countdown div { 
-      text-align: center;
-      background: rgba(0,0,0,0.3);
-      padding: 0.5rem 0.8rem;
-      border-radius: 8px;
-    }
-    .countdown span { 
-      display: block; 
-      font-size: 1.5rem;
-      color: var(--gold);
-    }
-    .countdown-label {
-      font-size: 0.7rem;
-      opacity: 0.8;
-    }
+    .countdown { background: rgba(255,215,0,0.2); border: 2px solid var(--gold); display: inline-flex; gap: 0.8rem; padding: 0.8rem 1.2rem; border-radius: 12px; font-weight: 700; margin: 1rem 0; backdrop-filter: blur(10px); }
+    .countdown div { text-align: center; background: rgba(0,0,0,0.3); padding: 0.5rem 0.8rem; border-radius: 8px; }
+    .countdown span { display: block; font-size: 1.5rem; color: var(--gold); }
+    .countdown-label { font-size: 0.7rem; opacity: 0.8; }
     
-    .btn { 
-      display: inline-block; 
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
-      color: var(--blue-deep); 
-      padding: 1rem 2rem; 
-      border: none; 
-      border-radius: 25px; 
-      font-weight: 700; 
-      font-size: 1.1rem;
-      cursor: pointer; 
-      text-decoration: none; 
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(255,215,0,0.4);
-      text-transform: uppercase;
-    }
-    .btn:hover { 
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(255,215,0,0.6);
-    }
+    .btn { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--blue-deep); padding: 1rem 2rem; border: none; border-radius: 25px; font-weight: 700; font-size: 1.1rem; cursor: pointer; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,215,0,0.4); text-transform: uppercase; }
+    .btn:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 6px 20px rgba(255,215,0,0.6); }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    .feature-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      border: 2px solid var(--gold);
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-    .feature-card h3 {
-      color: var(--gold);
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-    }
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
+    .spots-info { background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,0,0,0.3)); padding: 1rem; border-radius: 12px; text-align: center; margin-bottom: 2rem; border: 2px solid var(--gold); font-size: 1rem; }
+    .spots-info strong { color: var(--gold); font-size: 1.2rem; }
 
-    .spots-info { 
-      background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,0,0,0.3)); 
-      padding: 1rem; 
-      border-radius: 12px; 
-      text-align: center; 
-      margin-bottom: 2rem;
-      border: 2px solid var(--gold);
-      font-size: 1rem;
-    }
-    .spots-info strong { 
-      color: var(--gold);
-      font-size: 1.2rem;
-    }
+    .ticket-box { background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); padding: 2rem; border-radius: 20px; border: 3px solid var(--gold); box-shadow: 0 8px 32px rgba(255,215,0,0.2); max-width: 450px; margin: 0 auto 2rem; text-align: center; backdrop-filter: blur(10px); }
+    .ticket-box h3 { color: var(--gold); margin-bottom: 0.5rem; font-size: 1.5rem; }
+    .price { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0; background: linear-gradient(to right, var(--gold), #FFF, var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .qty-wrap { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+    .qty-btn { width: 45px; height: 45px; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; border-radius: 12px; font-size: 1.5rem; cursor: pointer; color: var(--blue-deep); font-weight: bold; transition: 0.2s; }
+    .qty-btn:hover:not(:disabled) { transform: scale(1.1); }
+    .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .qty-input { width: 60px; text-align: center; border: 2px solid var(--gold); background: rgba(0,0,0,0.3); color: var(--gold); font-weight: 700; font-size: 1.5rem; border-radius: 8px; }
+    .total-line { color: var(--gold); font-size: 1.1rem; margin-top: 0.5rem; }
+    .limit-badge { background: rgba(211,47,47,0.3); color: #ff6659; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; display: inline-block; margin-top: 0.8rem; border: 1px solid var(--red); }
+    .no-limit-badge { background: rgba(0,180,216,0.3); color: #00e5ff; padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.85rem; display: inline-block; margin-top: 0.8rem; border: 1px solid var(--rifas); }
 
-    .ticket-box { 
-      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); 
-      padding: 2rem; 
-      border-radius: 20px; 
-      border: 3px solid var(--gold);
-      box-shadow: 0 8px 32px rgba(255,215,0,0.2);
-      max-width: 450px; 
-      margin: 0 auto 2rem; 
-      text-align: center;
-      backdrop-filter: blur(10px);
-    }
-    .ticket-box h3 { 
-      color: var(--gold); 
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-    .price { 
-      font-size: 2.5rem; 
-      font-weight: 700; 
-      margin: 0.5rem 0;
-      background: linear-gradient(to right, var(--gold), #FFF, var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .qty-wrap { 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 1rem; 
-      margin: 1.5rem 0; 
-    }
-    .qty-btn { 
-      width: 45px; 
-      height: 45px; 
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
-      border: none; 
-      border-radius: 12px; 
-      font-size: 1.5rem; 
-      cursor: pointer;
-      color: var(--blue-deep);
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .qty-btn:hover:not(:disabled) { 
-      transform: scale(1.1);
-    }
-    .qty-btn:disabled { 
-      opacity: 0.3; 
-      cursor: not-allowed; 
-    }
-    .qty-input { 
-      width: 60px; 
-      text-align: center; 
-      border: 2px solid var(--gold); 
-      background: rgba(0,0,0,0.3);
-      color: var(--gold);
-      font-weight: 700; 
-      font-size: 1.5rem;
-      border-radius: 8px;
-    }
-    .total-line { 
-      color: var(--gold); 
-      font-size: 1.1rem; 
-      margin-top: 0.5rem;
-    }
-    .limit-badge { 
-      background: rgba(211,47,47,0.3); 
-      color: #ff6659; 
-      padding: 0.4rem 0.8rem; 
-      border-radius: 8px; 
-      font-size: 0.85rem; 
-      display: inline-block; 
-      margin-top: 0.8rem;
-      border: 1px solid var(--red);
-    }
-    .no-limit-badge {
-      background: rgba(0,180,216,0.3);
-      color: #00e5ff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin-top: 0.8rem;
-      border: 1px solid var(--rifas);
-    }
+    .number-selector { background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border: 2px solid var(--rifas); }
+    .number-selector label { display: block; margin-bottom: 0.5rem; color: var(--gold); font-weight: 600; }
+    .number-selector input { width: 100%; padding: 0.8rem; border: 2px solid var(--rifas); border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; font-size: 1.1rem; text-align: center; }
+    .number-selector input:focus { outline: none; border-color: var(--gold); }
+    .number-selector small { display: block; margin-top: 0.5rem; opacity: 0.8; font-size: 0.85rem; }
 
-    /* Number selector for Rifas */
-    .number-selector {
-      background: rgba(255,255,255,0.05);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin: 1rem 0;
-      border: 2px solid var(--rifas);
-    }
-    .number-selector label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: var(--gold);
-      font-weight: 600;
-    }
-    .number-selector input {
-      width: 100%;
-      padding: 0.8rem;
-      border: 2px solid var(--rifas);
-      border-radius: 8px;
-      background: rgba(0,0,0,0.3);
-      color: #fff;
-      font-size: 1.1rem;
-      text-align: center;
-    }
-    .number-selector input:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
-    .number-selector small {
-      display: block;
-      margin-top: 0.5rem;
-      opacity: 0.8;
-      font-size: 0.85rem;
-    }
+    .ref-box { background: rgba(255,215,0,0.15); border: 2px dashed var(--gold); padding: 1rem; border-radius: 12px; margin: 1rem 0; text-align: center; }
+    .ref-code { font-size: 1.8rem; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+    .ref-note { font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem; }
 
-    form { 
-      background: rgba(255,255,255,0.05); 
-      padding: 2rem; 
-      border-radius: 16px; 
-      border: 2px solid var(--gold);
-      max-width: 500px; 
-      margin: 0 auto;
-      backdrop-filter: blur(10px);
-    }
-    .form-group { 
-      margin-bottom: 1.2rem; 
-    }
-    label { 
-      display: block; 
-      margin-bottom: 0.5rem; 
-      font-weight: 600; 
-      color: var(--gold);
-    }
-    input, select { 
-      width: 100%; 
-      padding: 0.9rem; 
-      border: 2px solid rgba(255,215,0,0.3); 
-      border-radius: 10px; 
-      font-size: 1rem;
-      background: rgba(0,0,0,0.3);
-      color: #fff;
-      transition: 0.3s;
-    }
-    input:focus, select:focus { 
-      outline: none; 
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(255,215,0,0.2);
-    }
-    input::placeholder, select::placeholder {
-      color: rgba(255,255,255,0.5);
-    }
+    form { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 16px; border: 2px solid var(--gold); max-width: 500px; margin: 0 auto; backdrop-filter: blur(10px); }
+    .form-group { margin-bottom: 1.2rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--gold); }
+    input, select { width: 100%; padding: 0.9rem; border: 2px solid rgba(255,215,0,0.3); border-radius: 10px; font-size: 1rem; background: rgba(0,0,0,0.3); color: #fff; transition: 0.3s; }
+    input:focus, select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(255,215,0,0.2); }
+    input::placeholder, select::placeholder { color: rgba(255,255,255,0.5); }
 
-    .nequi-box { 
-      background: linear-gradient(135deg, rgba(217,0,108,0.2), rgba(0,0,0,0.3)); 
-      border: 3px dashed var(--nequi); 
-      padding: 2rem; 
-      border-radius: 16px; 
-      text-align: center; 
-      margin: 2rem auto; 
-      max-width: 500px;
-      backdrop-filter: blur(10px);
-    }
-    .nequi-number { 
-      font-size: 1.8rem; 
-      font-weight: 700; 
-      color: var(--nequi); 
-      margin: 0.8rem 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-    .copy-btn { 
-      background: rgba(255,255,255,0.2); 
-      border: 2px solid var(--nequi); 
-      padding: 0.5rem 1rem; 
-      border-radius: 8px; 
-      cursor: pointer; 
-      font-size: 0.9rem; 
-      margin-top: 0.5rem;
-      color: #fff;
-      transition: 0.3s;
-    }
-    .copy-btn:hover {
-      background: var(--nequi);
-    }
-    .steps { 
-      text-align: left; 
-      background: rgba(0,0,0,0.3); 
-      padding: 1.5rem; 
-      border-radius: 12px; 
-      margin: 1.5rem 0;
-      border-left: 4px solid var(--gold);
-    }
-    .steps ol { 
-      padding-left: 1.5rem; 
-    }
-    .steps li { 
-      margin-bottom: 0.6rem;
-      line-height: 1.5;
-    }
-    .steps strong {
-      color: var(--gold);
-    }
-    .btn-whatsapp { 
-      background: linear-gradient(135deg, var(--whatsapp), #128c7e); 
-      color: white; 
-      width: 100%; 
-      padding: 1.1rem; 
-      border: none; 
-      border-radius: 12px; 
-      font-weight: 700; 
-      cursor: pointer; 
-      font-size: 1.1rem; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      gap: 0.6rem; 
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
-    }
-    .btn-whatsapp:hover:not(:disabled) { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
-    }
-    .btn-whatsapp:disabled { 
-      background: #666; 
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
+    .nequi-box { background: linear-gradient(135deg, rgba(217,0,108,0.2), rgba(0,0,0,0.3)); border: 3px dashed var(--nequi); padding: 2rem; border-radius: 16px; text-align: center; margin: 2rem auto; max-width: 500px; backdrop-filter: blur(10px); }
+    .nequi-number { font-size: 1.8rem; font-weight: 700; color: var(--nequi); margin: 0.8rem 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    .copy-btn { background: rgba(255,255,255,0.2); border: 2px solid var(--nequi); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.9rem; margin-top: 0.5rem; color: #fff; transition: 0.3s; }
+    .copy-btn:hover { background: var(--nequi); }
+    .steps { text-align: left; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--gold); }
+    .steps ol { padding-left: 1.5rem; }
+    .steps li { margin-bottom: 0.6rem; line-height: 1.5; }
+    .steps strong { color: var(--gold); }
+    .btn-whatsapp { background: linear-gradient(135deg, var(--whatsapp), #128c7e); color: white; width: 100%; padding: 1.1rem; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+    .btn-whatsapp:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
+    .btn-whatsapp:disabled { background: #666; cursor: not-allowed; opacity: 0.5; }
 
-    .info { 
-      background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3)); 
-      padding: 2rem; 
-      border-radius: 16px; 
-      text-align: center; 
-      margin-top: 2rem;
-      border: 2px solid var(--gold);
-    }
-    .info h3 {
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .info ul { 
-      text-align: left; 
-      max-width: 600px; 
-      margin: 0.5rem auto; 
-      list-style: none; 
-      padding: 0; 
-    }
-    .info li { 
-      margin-bottom: 0.7rem; 
-      padding-left: 2rem; 
-      position: relative;
-      line-height: 1.5;
-    }
-    .info li::before { 
-      content: "🎯"; 
-      position: absolute; 
-      left: 0;
-      font-size: 1.2rem;
-    }
+    .info { background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.3)); padding: 2rem; border-radius: 16px; text-align: center; margin-top: 2rem; border: 2px solid var(--gold); }
+    .info h3 { color: var(--gold); margin-bottom: 1rem; }
+    .info ul { text-align: left; max-width: 600px; margin: 0.5rem auto; list-style: none; padding: 0; }
+    .info li { margin-bottom: 0.7rem; padding-left: 2rem; position: relative; line-height: 1.5; }
+    .info li::before { content: "🎯"; position: absolute; left: 0; font-size: 1.2rem; }
 
-    .prizes-box {
-      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(0,0,0,0.3));
-      border: 2px solid var(--bingo-pro);
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin: 1.5rem 0;
-      text-align: left;
-    }
-    .prizes-box h4 {
-      color: var(--bingo-pro);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .prize-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .prize-item:last-child {
-      border-bottom: none;
-    }
-    .prize-amount {
-      color: var(--gold);
-      font-weight: 700;
-    }
+    .prizes-box { background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(0,0,0,0.3)); border: 2px solid var(--bingo-pro); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; text-align: left; }
+    .prizes-box h4 { color: var(--bingo-pro); margin-bottom: 1rem; text-align: center; }
+    .prize-item { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .prize-item:last-child { border-bottom: none; }
+    .prize-amount { color: var(--gold); font-weight: 700; }
 
-    footer { 
-      text-align: center; 
-      padding: 2rem; 
-      background: rgba(0,0,0,0.5);
-      border-top: 2px solid var(--gold);
-      margin-top: 3rem;
-    }
-    footer p {
-      margin: 0.3rem 0;
-      opacity: 0.8;
-    }
-    .footer-links {
-      margin-top: 1rem;
-    }
-    .footer-links a {
-      color: var(--gold);
-      text-decoration: none;
-      margin: 0 0.5rem;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
+    footer { text-align: center; padding: 2rem; background: rgba(0,0,0,0.5); border-top: 2px solid var(--gold); margin-top: 3rem; }
+    footer p { margin: 0.3rem 0; opacity: 0.8; }
+    .footer-links { margin-top: 1rem; }
+    .footer-links a { color: var(--gold); text-decoration: none; margin: 0 0.5rem; }
+    .footer-links a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
       .hero h1 { font-size: 1.6rem; }
@@ -617,7 +169,6 @@
 </head>
 <body>
 
-  <!-- WhatsApp Group Bar -->
   <div class="whatsapp-group-bar">
     <div class="container">
       <a href="https://chat.whatsapp.com/GOGF61myWh07FOdb77DF3a?mode=wwt" target="_blank">
@@ -645,7 +196,6 @@
 
   <main class="container">
     
-    <!-- Game Selector -->
     <section>
       <h2>🎮 Elige Tu Juego</h2>
       <div class="game-selector">
@@ -659,7 +209,7 @@
           <div class="game-icon">🎰</div>
           <h3>Bingo 90 Pro</h3>
           <p>4 oportunidades por cartón</p>
-          <span class="game-price">$4.000 COP</span>
+          <span class="game-price">$1.500 COP</span>
         </div>
         <div class="game-tab rifas" onclick="showGame('rifas')">
           <div class="game-icon">🎲</div>
@@ -683,11 +233,7 @@
         <br>
         <a href="#comprar-linea" class="btn">🎟️ Comprar Ahora</a>
       </section>
-
-      <div class="spots-info">
-        🎟️ <strong>30 puestos por ronda</strong> | 🟢 <span id="spotsLeft-linea">24</span> disponibles
-      </div>
-
+      <div class="spots-info">🎟️ <strong>30 puestos por ronda</strong> | 🟢 <span id="spotsLeft-linea">24</span> disponibles</div>
       <section id="comprar-linea">
         <h2>🎫 Elige Tus Boletos</h2>
         <div class="ticket-box">
@@ -703,17 +249,6 @@
           <span class="limit-badge">⚠️ Máximo 2 boletos por jugador</span>
         </div>
       </section>
-
-      <section class="info">
-        <h3>ℹ️ ¿Cómo Funciona Bingo 90 Línea?</h3>
-        <ul>
-          <li>Compra 1 o 2 boletos por ronda ($4.000 c/u)</li>
-          <li>Solo necesitas 5 números especiales para ganar</li>
-          <li>Partidas rápidas y automáticas cada 5 segundos</li>
-          <li>Bote acumulado creciente</li>
-          <li>Sorteo sorpresa para el gran premio 🎁</li>
-        </ul>
-      </section>
     </div>
 
     <!-- BINGO 90 PRO -->
@@ -727,38 +262,30 @@
           <div><span id="seconds-pro">00</span><div class="countdown-label">SEG</div></div>
         </div>
         <br>
-        <a href="#comprar-pro" class="btn">🎟️ Comprar Cartones</a>
+        <a href="#comprar-pro" class="btn">️ Comprar Cartones</a>
       </section>
-
-      <div class="spots-info">
-        🎟️ <strong>Cartones disponibles</strong> | 🟢 <span id="spotsLeft-pro">50</span> disponibles
-      </div>
-
+      <div class="spots-info">️ <strong>Cartones disponibles</strong> | 🟢 <span id="spotsLeft-pro">50</span> disponibles</div>
+      
+      <!-- PREMIOS ACTUALIZADOS (SIN VALORES FIJOS) -->
       <div class="prizes-box">
         <h4>🏆 PREMIOS POR CARTÓN</h4>
-        <div class="prize-item">
-          <span>1️⃣ Primera Línea</span>
-          <span class="prize-amount">$50.000</span>
-        </div>
-        <div class="prize-item">
-          <span>2️⃣ Segunda Línea</span>
-          <span class="prize-amount">$100.000</span>
-        </div>
-        <div class="prize-item">
-          <span>3️⃣ Tercera Línea</span>
-          <span class="prize-amount">$150.000</span>
-        </div>
+        <div class="prize-item"><span>1️⃣ Primera Línea</span></div>
+        <div class="prize-item"><span>2️ Segunda Línea</span></div>
+        <div class="prize-item"><span>3️⃣ Tercera Línea</span></div>
         <div class="prize-item" style="border-top: 2px solid var(--gold); margin-top: 0.5rem; padding-top: 0.5rem;">
           <span style="font-size: 1.1rem;">🎰 EL GORDO (Cartón Lleno)</span>
           <span class="prize-amount" style="font-size: 1.2rem;">ACUMULADO DIARIO</span>
         </div>
+        <p style="text-align: center; margin-top: 1rem; color: var(--gold); font-size: 0.95rem; opacity: 0.9;">
+           Los premios dependen de la cantidad de cartones vendidos
+        </p>
       </div>
 
       <section id="comprar-pro">
         <h2>🎫 Elige Tus Cartones</h2>
         <div class="ticket-box" style="border-color: var(--bingo-pro);">
           <h3 style="color: var(--bingo-pro);">Cartón Bingo 90 Pro</h3>
-          <p class="price">$4.000 COP</p>
+          <p class="price">$1.500 COP</p>
           <p style="opacity:0.9; margin-bottom:1rem;">4 oportunidades de ganar por cartón</p>
           <div class="qty-wrap">
             <button class="qty-btn" id="btnMinus-pro" onclick="changeQty('pro', -1)" disabled style="background: linear-gradient(135deg, var(--bingo-pro), #cc5500);">−</button>
@@ -766,19 +293,8 @@
             <button class="qty-btn" id="btnPlus-pro" onclick="changeQty('pro', 1)" style="background: linear-gradient(135deg, var(--bingo-pro), #cc5500);">+</button>
           </div>
           <p class="total-line">Total: $<span id="totalPrice-pro">0</span> COP</p>
-          <span class="limit-badge" style="background: rgba(255,107,53,0.3); color: #ffaa80; border-color: var(--bingo-pro);">⚠️ Máximo 4 cartones por jugador</span>
+          <span class="no-limit-badge" style="background: rgba(255,107,53,0.3); color: #ffaa80; border-color: var(--bingo-pro);">✅ Sin límite - Compra todos los que quieras</span>
         </div>
-      </section>
-
-      <section class="info" style="border-color: var(--bingo-pro);">
-        <h3 style="color: var(--bingo-pro);">ℹ️ ¿Cómo Funciona Bingo 90 Pro?</h3>
-        <ul>
-          <li>Compra hasta 4 cartones por ronda ($4.000 c/u)</li>
-          <li>4 oportunidades de ganar con cada cartón</li>
-          <li>Gana completando 1ra, 2da o 3ra línea</li>
-          <li>¡El Gordo! Cartón lleno = Acumulado diario</li>
-          <li>Sorteo en vivo con números aleatorios</li>
-        </ul>
       </section>
     </div>
 
@@ -795,31 +311,14 @@
         <br>
         <a href="#comprar-rifas" class="btn">🎟️ Elegir Números</a>
       </section>
-
       <div class="prizes-box" style="border-color: var(--rifas); background: linear-gradient(135deg, rgba(0,180,216,0.2), rgba(0,0,0,0.3));">
         <h4 style="color: var(--rifas);">💰 5 POSIBILIDADES DE GANAR</h4>
-        <div class="prize-item">
-          <span>🥇 500 mil - Dos últimas del mayor</span>
-          <span class="prize-amount">$500.000</span>
-        </div>
-        <div class="prize-item">
-          <span>🥈 100 mil - Dos primeras</span>
-          <span class="prize-amount">$100.000</span>
-        </div>
-        <div class="prize-item">
-          <span>🥉 50 mil - Dos centrales</span>
-          <span class="prize-amount">$50.000</span>
-        </div>
-        <div class="prize-item">
-          <span>50 mil - Primera y última</span>
-          <span class="prize-amount">$50.000</span>
-        </div>
-        <div class="prize-item">
-          <span>30 mil - Últimas de la serie</span>
-          <span class="prize-amount">$30.000</span>
-        </div>
+        <div class="prize-item"><span>🥇 500 mil - Dos últimas del mayor</span><span class="prize-amount">$500.000</span></div>
+        <div class="prize-item"><span>🥈 100 mil - Dos primeras</span><span class="prize-amount">$100.000</span></div>
+        <div class="prize-item"><span>🥉 50 mil - Dos centrales</span><span class="prize-amount">$50.000</span></div>
+        <div class="prize-item"><span>50 mil - Primera y última</span><span class="prize-amount">$50.000</span></div>
+        <div class="prize-item"><span>30 mil - Últimas de la serie</span><span class="prize-amount">$30.000</span></div>
       </div>
-
       <section id="comprar-rifas">
         <h2>🎫 Elige Tus Números</h2>
         <div class="ticket-box" style="border-color: var(--rifas);">
@@ -829,8 +328,8 @@
           
           <div class="number-selector">
             <label for="numbers-rifas">📝 Tus números favoritos (00-99):</label>
-            <input type="text" id="numbers-rifas" placeholder="Ej: 15, 23, 87, 99" maxlength="200">
-            <small>Separa los números con comas. Ej: 05, 12, 45, 78, 99</small>
+            <input type="text" id="numbers-rifas" placeholder="Ej: 15, 23, 87, 99" maxlength="200" oninput="syncRifasQty()">
+            <small>Separa los números con comas. La cantidad se ajustará automáticamente.</small>
           </div>
 
           <div class="qty-wrap">
@@ -842,23 +341,11 @@
           <span class="no-limit-badge">✅ Sin límite - Compra todos los que quieras</span>
         </div>
       </section>
-
-      <section class="info" style="border-color: var(--rifas);">
-        <h3 style="color: var(--rifas);">ℹ️ ¿Cómo Funciona Rifas 2 Cifras?</h3>
-        <ul>
-          <li>Elige tus números favoritos del 00 al 99</li>
-          <li>Cada número cuesta $10.000 COP</li>
-          <li>Jugamos con resultados de loterías oficiales</li>
-          <li>5 formas diferentes de ganar con cada número</li>
-          <li>Sin límite de números por persona</li>
-          <li>Resultados basados en lotería del día</li>
-        </ul>
-      </section>
     </div>
 
     <!-- COMMON SECTIONS -->
     <section id="datos">
-      <h2>📝 Tus Datos</h2>
+      <h2> Tus Datos & Referencia</h2>
       <form id="userForm">
         <div class="form-group">
           <label>Nombre completo</label>
@@ -871,6 +358,12 @@
         <div class="form-group">
           <label>Correo (opcional)</label>
           <input type="email" id="email" placeholder="correo@ejemplo.com">
+        </div>
+        
+        <div class="ref-box">
+          <p style="margin-bottom:0.5rem;"> Tu código único de referencia:</p>
+          <div class="ref-code" id="refCode">--- ---</div>
+          <p class="ref-note">Incluye este código en la descripción de tu pago Nequi</p>
         </div>
       </form>
     </section>
@@ -887,6 +380,7 @@
             <li>Abre tu app <strong>Nequi</strong></li>
             <li>Selecciona <strong>"Enviar dinero"</strong></li>
             <li>Pega el número y confirma el monto</li>
+            <li>En <strong>"Descripción"</strong> escribe tu código: <span id="refForNequi" style="color:var(--gold); font-weight:bold;">---</span></li>
             <li><strong>Toma captura</strong> del comprobante</li>
             <li>Presiona el botón verde para enviarla por WhatsApp</li>
           </ol>
@@ -912,7 +406,7 @@
       <div class="footer-links">
         <a href="https://www.facebook.com/jonzu17" target="_blank">📘 Facebook</a> | 
         <a href="https://wa.me/573215978316" target="_blank">📱 WhatsApp</a> |
-        <a href="https://chat.whatsapp.com/GOGF61myWh07FOdb77DF3a?mode=wwt" target="_blank">👥 Grupo WhatsApp</a>
+        <a href="https://chat.whatsapp.com/GOGF61myWh07FOdb77DF3a?mode=wwt" target="_blank"> Grupo WhatsApp</a>
       </div>
       <p style="margin-top:1rem; font-size:0.85rem; opacity:0.7;">
         Juega con responsabilidad. Sorteos sujetos a disponibilidad y verificación de pago.
@@ -924,27 +418,30 @@
     // Game state
     const games = {
       'linea': { qty: 0, max: 2, price: 4000, name: 'Bingo 90 Línea' },
-      'pro': { qty: 0, max: 4, price: 4000, name: 'Bingo 90 Pro' },
+      'pro': { qty: 0, max: 999, price: 1500, name: 'Bingo 90 Pro' }, // ✅ SIN LÍMITE
       'rifas': { qty: 0, max: 999, price: 10000, name: 'Rifas 2 Cifras', numbers: '' }
     };
     let currentGame = 'linea';
+    let uniqueRef = '';
+
+    // Generate unique reference code
+    function generateRef() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = 'REF-';
+      for (let i = 0; i < 6; i++) code += chars.charAt(Math.floor(Math.random() * chars.length));
+      uniqueRef = code;
+      document.getElementById('refCode').textContent = uniqueRef;
+      document.getElementById('refForNequi').textContent = uniqueRef;
+    }
 
     // Show selected game
     function showGame(gameId) {
       currentGame = gameId;
-      
-      // Update tabs
       document.querySelectorAll('.game-tab').forEach(tab => tab.classList.remove('active'));
       document.querySelector(`.game-tab.${gameId}`).classList.add('active');
-      
-      // Update content
       document.querySelectorAll('.game-content').forEach(content => content.classList.remove('active'));
       document.getElementById(gameId).classList.add('active');
-      
-      // Update button state
       updateButtonState();
-      
-      // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -952,19 +449,40 @@
     function changeQty(game, delta) {
       const g = games[game];
       g.qty = Math.min(g.max, Math.max(0, g.qty + delta));
-      
       document.getElementById(`qtyInput-${game}`).value = g.qty;
       document.getElementById(`totalPrice-${game}`).textContent = (g.qty * g.price).toLocaleString('es-CO');
       document.getElementById(`btnMinus-${game}`).disabled = g.qty === 0;
       document.getElementById(`btnPlus-${game}`).disabled = g.qty >= g.max;
-      
+      updateButtonState();
+    }
+
+    // Sync Rifas quantity with numbers input
+    function syncRifasQty() {
+      const input = document.getElementById('numbers-rifas').value.trim();
+      if (!input) {
+        changeQty('rifas', -games.rifas.qty);
+        return;
+      }
+      const numbers = input.split(',').map(n => n.trim()).filter(n => n !== '');
+      const count = numbers.length;
+      games.rifas.qty = count;
+      games.rifas.numbers = numbers.join(', ');
+      document.getElementById('qtyInput-rifas').value = count;
+      document.getElementById(`totalPrice-rifas`).textContent = (count * 10000).toLocaleString('es-CO');
+      document.getElementById('btnMinus-rifas').disabled = count === 0;
+      document.getElementById('btnPlus-rifas').disabled = count >= 999;
       updateButtonState();
     }
 
     // Update WhatsApp button state
     function updateButtonState() {
       const total = getTotalAmount();
-      document.getElementById('waBtn').disabled = total === 0;
+      const nombre = document.getElementById('nombre').value.trim();
+      const tel = document.getElementById('telefono').value.trim();
+      const rifasNumbers = document.getElementById('numbers-rifas').value.trim();
+      
+      const valid = total > 0 && nombre && tel && (currentGame !== 'rifas' || rifasNumbers);
+      document.getElementById('waBtn').disabled = !valid;
     }
 
     // Get total amount
@@ -979,7 +497,6 @@
         endTime = new Date().getTime() + (12 * 60 * 60 * 1000);
         localStorage.setItem(`bingoEndTime-${gameId}`, endTime);
       }
-
       function tick() {
         const now = new Date().getTime();
         const diff = endTime - now;
@@ -1003,9 +520,7 @@
 
     // Copy Nequi number
     function copyNumber() {
-      navigator.clipboard.writeText('3147156778').then(() => {
-        alert('✅ Número Nequi copiado: 314 715 6778');
-      });
+      navigator.clipboard.writeText('3147156778').then(() => alert('✅ Número Nequi copiado: 314 715 6778'));
     }
 
     // Send proof via WhatsApp
@@ -1013,6 +528,7 @@
       const nombre = document.getElementById('nombre').value.trim();
       const tel = document.getElementById('telefono').value.trim();
       const email = document.getElementById('email').value.trim() || 'No proporcionado';
+      const rifasNumbers = document.getElementById('numbers-rifas').value.trim();
 
       if (!nombre || !tel) {
         alert('⚠️ Por favor completa al menos tu nombre y teléfono.');
@@ -1026,23 +542,31 @@
         return;
       }
 
+      if (currentGame === 'rifas' && !rifasNumbers) {
+        alert('️ Para Rifas debes escribir tus números favoritos.');
+        document.getElementById('numbers-rifas').focus();
+        return;
+      }
+
+      if (!uniqueRef) generateRef();
+
       let msg = `🎰 *BINGO & RIFAS - COMPRA*\n\n`;
+      msg += `🔖 *Código Ref:* ${uniqueRef}\n`;
       msg += `👤 *Nombre:* ${nombre}\n`;
-      msg += `📱 *Tel:* ${tel}\n`;
+      msg += ` *Tel:* ${tel}\n`;
       msg += `📧 *Email:* ${email}\n\n`;
       
       if (games.linea.qty > 0) {
-        msg += `🎯 *Bingo 90 Línea:* ${games.linea.qty} boleto(s)\n`;
+        msg += ` *Bingo 90 Línea:* ${games.linea.qty} boleto(s)\n`;
         msg += `   Subtotal: $${(games.linea.qty * 4000).toLocaleString('es-CO')} COP\n`;
       }
       if (games.pro.qty > 0) {
         msg += `🎰 *Bingo 90 Pro:* ${games.pro.qty} cartón(es)\n`;
-        msg += `   Subtotal: $${(games.pro.qty * 4000).toLocaleString('es-CO')} COP\n`;
+        msg += `   Subtotal: $${(games.pro.qty * 1500).toLocaleString('es-CO')} COP\n`;
       }
       if (games.rifas.qty > 0) {
-        const numbers = document.getElementById('numbers-rifas').value.trim();
         msg += `🎲 *Rifas 2 Cifras:* ${games.rifas.qty} número(s)\n`;
-        if (numbers) msg += `   Números: ${numbers}\n`;
+        msg += `   🔢 Números: ${rifasNumbers}\n`;
         msg += `   Subtotal: $${(games.rifas.qty * 10000).toLocaleString('es-CO')} COP\n`;
       }
       
@@ -1052,6 +576,13 @@
       const waLink = `https://wa.me/573215978316?text=${encodeURIComponent(msg)}`;
       window.open(waLink, '_blank');
     }
+
+    // Generate ref on load
+    window.addEventListener('DOMContentLoaded', () => {
+      generateRef();
+      document.getElementById('nombre').addEventListener('input', updateButtonState);
+      document.getElementById('telefono').addEventListener('input', updateButtonState);
+    });
   </script>
 </body>
 </html>
